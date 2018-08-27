@@ -16,7 +16,7 @@ export default class Formular {
 
   html() {
     const element = htmlToElement(`
-      <div class="accordion" data-group="site" id="request">
+      <div class="accordion" data-group="site">
           <div class="accordion__head">Site hinzufügen
               <div class="badge right">
                   <i class="fa fa-plus"></i>
