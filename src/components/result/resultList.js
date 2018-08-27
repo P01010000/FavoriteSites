@@ -22,7 +22,15 @@ export default class ResultList {
   addData(result, append = false) {
     this.data = append ? this.data.concat(result.sites) : result.sites;
     this.reachedEnd = result.reachedEnd;
-    this.render();
+
+    if (append) {
+      const more = this.element.querySelector('.accordion__content');
+      this.element.removeChild(more);
+      result.sites.forEach(entry => this.element.appendChild(ResultListItem(entry)));
+      if (!result.reachedEnd) this.element.addChild(more);
+    } else {
+      this.render();
+    }
   }
 
   render() {
