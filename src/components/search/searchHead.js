@@ -14,19 +14,23 @@ export default class SearchHead {
     this.timeout = setTimeout(() => this.callback(ev.target.value), 400);
   }
 
+  set onChange(callback) {
+    this.callback = callback;
+  }
+
   render() {
     const element = htmlToElement(`
-    <div class="accordion__head search">
-    <div class="accordion--trigger accordion__head--search--wrapper">
-      <div class="accordion--trigger accordion__head--search">
-        ${OVERVIEW}
+      <div class="accordion__head search">
+        <div class="accordion--trigger accordion__head--search--wrapper">
+          <div class="accordion--trigger accordion__head--search">
+            ${OVERVIEW}
+          </div>
+        </div>
+        <div class="Suche Suche--accordion chayns__border-color--50">
+          <input type="text" placeholder="${this.placeholder}" value="">
+          <label><i class="fa fa-search"></i></label>
+        </div>
       </div>
-    </div>
-    <div class="Suche Suche--accordion chayns__border-color--50">
-      <input type="text" placeholder="${this.placeholder}" value="">
-      <label><i class="fa fa-search"></i></label>
-    </div>
-  </div>
     `);
 
     element.querySelector('input').addEventListener('keyup', this.handleChange.bind(this));

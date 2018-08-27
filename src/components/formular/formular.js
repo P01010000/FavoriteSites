@@ -9,6 +9,7 @@ export default class Formular {
       await Login();
       await chayns.intercom.sendMessageToPage({ text: [...new FormData(ev.target).entries()].map(([k, v]) => `${k} = ${v}`).join('\n') });
       chayns.dialog.alert('Site wird in Kürze hinzugefügt');
+      ev.target.reset();
     } catch (err) {
       chayns.dialog.alert('Du musst dich vorher einloggen');
     }
