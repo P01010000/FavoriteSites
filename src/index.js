@@ -10,7 +10,7 @@ const init = async () => {
 
     const root = document.querySelector('.tapp__content');
 
-    root.appendChild(new SearchContainer('chayns').render());
+    root.appendChild(new SearchContainer('chayns', 'Suche', 20).render());
     root.appendChild(new Formular().render());
 
     console.info('ServerUrl for current environment:', SERVER_URL);
