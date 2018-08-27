@@ -39,5 +39,12 @@ export default class ResultList {
       more.querySelector('a').addEventListener('click', this.loadMore);
       this.element.appendChild(more);
     }
+    if (this.data.length === 0) {
+      this.element.appendChild(htmlToElement(`
+        <div class="accordion__content">
+          ${NOTHING_FOUND}
+        </div>
+      `));
+    }
   }
 }

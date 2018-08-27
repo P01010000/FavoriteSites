@@ -14,23 +14,27 @@ export default class SearchContainer {
       </div>
     `);
     this.element.appendChild(new SearchHead(placeholder, this.handleSearch.bind(this)).render());
-    this.resultList = new ResultList(this.loadMore.bind(this));
+    this.resultList = new ResultList(this.handleMore.bind(this));
     this.element.appendChild(this.resultList.element);
+    this.handleMore();
   }
 
-  async handleSearch(searchString) {
+  handleSearch(searchString) {
     this.searchString = searchString;
     this.start = 0;
 
-    const result = await fetchSites(searchString, 0, this.itemsPerRequest);
-    this.resultList.addData(result);
-    this.start += result.sites.length;
+    this.loadSiteData(false);
   }
 
-  async loadMore() {
+  handleMore() {
+    this.loadSiteData(true);
+  }
+
+  async loadSiteData(append) {
     const result = await fetchSites(this.searchString, this.start, this.itemsPerRequest);
-    this.resultList.addData(result, true);
+    this.resultList.addData(result, append);
     this.start += result.sites.length;
+    this.element.classList.add('accordion--open');
   }
 
 
