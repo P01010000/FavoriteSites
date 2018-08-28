@@ -16,7 +16,7 @@ export default class SearchContainer {
     this.element.appendChild(new SearchHead(placeholder, this.handleSearch.bind(this)).render());
     this.resultList = new ResultList(this.handleMore.bind(this));
     this.element.appendChild(this.resultList.element);
-    this.handleMore();
+    this.handleSearch(defaultSearch);
   }
 
   handleSearch(searchString) {

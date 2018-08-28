@@ -10,11 +10,6 @@ export default class ResultList {
     this.loadMore = loadMore;
     this.element = htmlToElement(`
       <div class="accordion__body">
-        <div class="accordion__content">
-          <div style="text-align: right">
-            <a href="#">${SHOW_MORE}</a>
-          </div>
-        </div>
       </div>
     `);
   }
